@@ -1,0 +1,559 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>狄克斯特拉算法-算法图解第七章 - MxuBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liuti.tech","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>MxuBlog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('http://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202103/ab02cbdf7bd53af5de00d7fd4fbc25c4--4227482612.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="狄克斯特拉算法-算法图解第七章">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-06-02 22:41" pubdate>
+        2020年6月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">狄克斯特拉算法-算法图解第七章</h1>
+            
+            <div class="markdown-body">
+              <h2 id="何为狄克斯特拉算法"><a href="#何为狄克斯特拉算法" class="headerlink" title="何为狄克斯特拉算法"></a>何为狄克斯特拉算法</h2><p>1.狄克斯特拉算法用于权重图（每一条边都有其相对应的数字），算法可以找出图中权重相加最小的路径。</p>
+<p>2.和广度优先搜索不同的是，狄克斯特拉算法找的是总权重最小的路径，而广度优先搜索则是应用于非加权图，找的是段数最少的路径。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3><p><img src="/img/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%83%E7%AB%A0/Snipaste_2020-06-02_22-45-56.png" srcset="/img/loading.gif" lazyload></p>
+<p>以这张图片为例，起点为start，终点为fin。那么节点start的邻居就有A、B，节点A的邻居有fin，节点B的邻居有fin，节点fin则没有邻居。</p>
+<p>这个算法一共需要三个表，一个记录所有的节点和其邻居，一个记录从起点到该节点所需的花销，一个记录每个节点的父节点。</p>
+<p>表一（记录所有的节点和其邻居）：</p>
+<table>
+<thead>
+<tr>
+<th align="center">节点</th>
+<th align="center">邻居</th>
+<th align="center">开销</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">start</td>
+<td align="center">A、B</td>
+<td align="center">to A: 6             to B: 2</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">fin</td>
+<td align="center">to fin: 1</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">A、B</td>
+<td align="center">to A:3              to fin:5</td>
+</tr>
+<tr>
+<td align="center">fin</td>
+<td align="center">None</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>用代码表示出来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 表一，创建用于存储节点的所有邻居的字典</span><br>graph = &#123;&#125;<br>graph[<span class="hljs-string">&quot;start&quot;</span>] = &#123;<span class="hljs-string">&quot;A&quot;</span>: <span class="hljs-number">6</span>, <span class="hljs-string">&quot;B&quot;</span>: <span class="hljs-number">2</span>&#125;<br>graph[<span class="hljs-string">&quot;A&quot;</span>] = &#123;<span class="hljs-string">&quot;fin&quot;</span>: <span class="hljs-number">1</span>&#125;<br>graph[<span class="hljs-string">&quot;B&quot;</span>] = &#123;<span class="hljs-string">&quot;A&quot;</span>: <span class="hljs-number">3</span>, <span class="hljs-string">&quot;fin&quot;</span>: <span class="hljs-number">5</span>&#125;<br>graph[<span class="hljs-string">&quot;fin&quot;</span>] = &#123;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>表二（从起点到该节点所需的花销）：</p>
+<table>
+<thead>
+<tr>
+<th align="center">节点</th>
+<th align="center">从起点到该节点所需的开销</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">fin</td>
+<td align="center">infinity</td>
+</tr>
+</tbody></table>
+<p>用代码表示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 由于还不知道到终点需要花费多久，所以用float(&quot;inf&quot;)来代表</span><br>infinity = <span class="hljs-built_in">float</span>(<span class="hljs-string">&quot;inf&quot;</span>)<br>costs = &#123;<span class="hljs-string">&quot;A&quot;</span>: <span class="hljs-number">6</span>, <span class="hljs-string">&quot;B&quot;</span>: <span class="hljs-number">2</span>, <span class="hljs-string">&quot;fin&quot;</span>: infinity&#125;<br></code></pre></td></tr></table></figure>
+
+<p>表三（节点所对应的父节点）：</p>
+<table>
+<thead>
+<tr>
+<th align="center">节点</th>
+<th align="center">父节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A</td>
+<td align="center">start</td>
+</tr>
+<tr>
+<td align="center">B</td>
+<td align="center">start</td>
+</tr>
+<tr>
+<td align="center">fin</td>
+<td align="center">None</td>
+</tr>
+</tbody></table>
+<p>用代码表示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">parents = &#123;<span class="hljs-string">&quot;A&quot;</span>: <span class="hljs-string">&quot;start&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>: <span class="hljs-string">&quot;start&quot;</span>, <span class="hljs-string">&quot;fin&quot;</span>: <span class="hljs-literal">None</span>&#125;<br><span class="hljs-comment"># 记录已经处理过的节点</span><br>processed = []<br></code></pre></td></tr></table></figure>
+
+<h3 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h3><p>由于路径还没有开始找，所以我们是不知道花费时间最短的路径是哪一条，我们先给假设最低的时间就是infinity，然后从costs表中找出低于这个时间的节点，再根据这个节点进行路径的查找。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_lowest_cost_node</span>(<span class="hljs-params">costs</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">	这个函数最主要的作用就是检查节点是否已经处理过以及将下一个节点的花销与之前的进行对比，</span><br><span class="hljs-string">	如果花销比之前的低，则更新lowest_cost和lowest_cost_node，方便下一次进行比对</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    lowest_cost = <span class="hljs-built_in">float</span>(<span class="hljs-string">&quot;inf&quot;</span>)<br>    lowest_cost_node = <span class="hljs-literal">None</span><br>    <span class="hljs-comment"># 遍历记录花费时间的字典</span><br>    <span class="hljs-keyword">for</span> node <span class="hljs-keyword">in</span> costs:<br>        <span class="hljs-comment"># 遍历花费时间的字典，取出相应节点所需的时间</span><br>        cost = costs[node]<br>        <span class="hljs-keyword">if</span> cost &lt; lowest_cost <span class="hljs-keyword">and</span> node <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> processed:<br>            lowest_cost = cost<br>            lowest_cost_node = node<br>        <span class="hljs-keyword">return</span> lowest_cost_node<br><br><br>node = find_lowest_cost_node(costs)  <span class="hljs-comment"># 初次进行节点的查找</span><br><span class="hljs-keyword">while</span> node <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>    cost = costs[node]<br>    neighbors = graph[node]<br>    <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> neighbors.keys():  <span class="hljs-comment"># 获得节点的所有邻居</span><br>        new_cost = cost + neighbors[n]  <span class="hljs-comment"># 计算从起点到当前节点邻居所需的时间</span><br>        <span class="hljs-comment"># A的邻居是fin，但是从起点到fin的时间未知(也就是infinity)。</span><br>        <span class="hljs-comment"># 所以start to A + A to fin = 7，这个时间会将原本的infinity更新为7</span><br>        <span class="hljs-keyword">if</span> costs[n] &gt; new_cost:<br>            costs[n] = new_cost  <span class="hljs-comment"># 如果经过新节点的时间小于之前所需的时间的话就更新邻居的开销</span><br>            parents[n] = node  <span class="hljs-comment"># 更新该节点的父节点</span><br>    processed.append(node)  <span class="hljs-comment"># 计算过起点到该节点所有邻居的花销后，将其标记为已处理</span><br>    <span class="hljs-built_in">print</span>(node)<br>    node = find_lowest_cost_node(costs)  <span class="hljs-comment"># 再找出下一个节点</span><br><span class="hljs-built_in">print</span>(costs)<br><span class="hljs-built_in">print</span>(parents)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="负权边"><a href="#负权边" class="headerlink" title="负权边"></a>负权边</h2><p><img src="/img/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%83%E7%AB%A0/Snipaste_2020-06-01_17-23-56.png" srcset="/img/loading.gif" lazyload></p>
+<p>以这张图为例子，0就为最低的开销，检查乐谱的邻居，那么乐谱到海报的开销为0，到黑胶唱片的为5，然后检查开销最小的海报这条路径，到架子鼓开销为35，这样检查完了海报的邻居。接下来就要检查黑胶唱片的邻居海报，但是海报已经检查完了他的邻居，所以已经不能被更新了，但是很明显5+（-7）是要比之前算出来的小的，但被标记过就没有办法更新了，所以这种情况下出现负权边是没有办法找到最小开销的路径的。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/algorithm/">algorithm</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/09/c%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88%E7%94%A8%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">c语言指针用法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/13/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E5%85%AD%E7%AB%A0/">
+                        <span class="hidden-mobile">广度优先搜索-算法图解第六章</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

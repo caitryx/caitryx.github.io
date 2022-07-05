@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>MxuBlog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liuti.tech","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>MxuBlog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('http://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202103/ab02cbdf7bd53af5de00d7fd4fbc25c4--4227482612.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="海内存知己，天涯若比邻">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/06/09/c%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88%E7%94%A8%E6%B3%95/" target="_self">
+          <img src="//cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202105/58ecbeb7dbd1e25a1e063d6c7f47037b--3853100870.jpg" srcset="/img/loading.gif" lazyload alt="c语言指针用法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/09/c%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88%E7%94%A8%E6%B3%95/" target="_self">
+          c语言指针用法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/09/c%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88%E7%94%A8%E6%B3%95/" target="_self">
+          
+          
+            
+          
+          这里指针的内容根据c Primer Plus上整理出来的，省略了书上部分内容，只记录了容易混淆的一些内容。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-09 18:00" pubdate>
+              2021-06-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/c/">c</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/pointer/">pointer</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/02/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%83%E7%AB%A0/" target="_self">
+          <img src="//cdn-ali-img-staticbz.shanhutech.cn/bizhi/staticwp/202005/f83597eab6d7592faccfeb35fec0ff67--1019387436.jpg" srcset="/img/loading.gif" lazyload alt="狄克斯特拉算法-算法图解第七章">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/06/02/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%83%E7%AB%A0/" target="_self">
+          狄克斯特拉算法-算法图解第七章
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/06/02/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%83%E7%AB%A0/" target="_self">
+          
+          
+            
+          
+          何为狄克斯特拉算法1.狄克斯特拉算法用于权重图（每一条边都有其相对应的数字），算法可以找出图中权重相加最小的路径。
+2.和广度优先搜索不同的是，狄克斯特拉算法找的是总权重最小的路径，而广度优先搜索则是应用于非加权图，找的是段数最少的路径。
+实现数据准备
+以这张图片为例，起点为start，终点为fin。那么节点start的邻居就有A、B，节点A的邻居有fin，节点B的邻居有fin，节点fin则没有邻
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-02 22:41" pubdate>
+              2020-06-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/algorithm/">algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/13/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E5%85%AD%E7%AB%A0/" target="_self">
+          <img src="https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202206/97faf8a03d93791dda0b712ac925ede0--799409862.jpg" srcset="/img/loading.gif" lazyload alt="广度优先搜索-算法图解第六章">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/13/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E5%85%AD%E7%AB%A0/" target="_self">
+          广度优先搜索-算法图解第六章
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/13/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E5%85%AD%E7%AB%A0/" target="_self">
+          
+          
+            
+          
+          前言现在博客里挺多文章都是结合了书上内容来写的，可以说更像是将书上的内容总结出来吧，但是我更想的是按照自己的风格来写，接下来应该会慢慢转变。   
+最短路径广度优先搜索可以用来查找最短路径，举个例子：如果你需要找人帮忙，你会先找你身边认识的人，如果你认识的人帮不了你，那么就会找你朋友认识的人，如果还没有找到，就会找你朋友的朋友，直到找到为止。这样你和你的朋友为一度关系，你朋友的朋友就为二度关系，依
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-13 21:47" pubdate>
+              2020-05-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/algorithm/">algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/09/%E6%95%A3%E5%88%97%E8%A1%A8-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%BA%94%E7%AB%A0/" target="_self">
+          <img src="https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202206/3b116241c0c8879ab42e0eda04f33bec--800015496.jpg" srcset="/img/loading.gif" lazyload alt="散列表-算法图解第五章">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/09/%E6%95%A3%E5%88%97%E8%A1%A8-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%BA%94%E7%AB%A0/" target="_self">
+          散列表-算法图解第五章
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/09/%E6%95%A3%E5%88%97%E8%A1%A8-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%BA%94%E7%AB%A0/" target="_self">
+          
+          
+            
+          
+          散列函数无论什么数据通过散列函数，它都会返还相对应的数字。但散列函数必须满足以下两个条件：
+​    1.输入相同内容时返回的数字应该是一致的，如果不一致便失去了意义。
+​    2.不同的输入应该对应不同的数字，这样就可以尽量避免与其他冲突。
+假设有三个字符串”aa”, “bb”, “cc”，然后我们创建一个空的数组，通过散列函数的计算后根据散列函数返回的数字来将这三个字符串存在与数字相对应的数
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-09 19:54" pubdate>
+              2020-05-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/algorithm/">algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/22/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E5%9B%9B%E7%AB%A0/" target="_self">
+          <img src="https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202112/e6911c2f31d50d15e930072ae3bb186c--3926264918.jpg" srcset="/img/loading.gif" lazyload alt="快速排序-算法图解第四章">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/22/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E5%9B%9B%E7%AB%A0/" target="_self">
+          快速排序-算法图解第四章
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/22/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E5%9B%9B%E7%AB%A0/" target="_self">
+          
+          
+            
+          
+          分而治之divide and conquer(D&amp;C)是一种著名的递归式问题解决方法，快速排序就是一种D&amp;C算法。
+分地问题，一块height:1680m,width:640m的土地，要将其均匀地分成方块，并且分的方块要尽量的大。使用D&amp;C来解决这个问题包括了两个步骤：1.基线条件    2.递归条件 ，每次递归调用都必须缩小问题的规模。
+先划分出两个640*640的土地，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-22 19:01" pubdate>
+              2020-04-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/algorithm/">algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/22/%E9%80%92%E5%BD%92-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%89%E7%AB%A0/" target="_self">
+          <img src="https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202205/859d9630b70cb8b5b42385b44e5e8d2c--927640961.jpg" srcset="/img/loading.gif" lazyload alt="递归-算法图解第三章">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/22/%E9%80%92%E5%BD%92-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%89%E7%AB%A0/" target="_self">
+          递归-算法图解第三章
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/22/%E9%80%92%E5%BD%92-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%89%E7%AB%A0/" target="_self">
+          
+          
+            
+          
+          递归递归实际上就是自己调用自己，组成递归需要基线条件(告诉程序什么时候停止递归)和递归条件(什么时候开始递归)，如果没有终止程序的条件，程序就会无限循环。
+123456# 递归def calculate(number):    if number &lt; 0:	# 基线条件        return	# return可以用来返回和终止    else:	# 递归条件        calcul
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-22 18:58" pubdate>
+              2020-04-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/algorithm/">algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%BA%8C%E7%AB%A0/" target="_self">
+          <img src="https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202206/b915b5e9c14f99553e1922c56b17a7e0--1697499871.jpg" srcset="/img/loading.gif" lazyload alt="选择排序(算法图解第二章)">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%BA%8C%E7%AB%A0/" target="_self">
+          选择排序(算法图解第二章)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F-%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%BA%8C%E7%AB%A0/" target="_self">
+          
+          
+            
+          
+          数组和列表数组和列表各有优劣，数组的元素在内存中的存储是连续的，所以需要分配一定的连续空间，而链表的元素不需要连续存储。
+链表链表可以存储在内存中任何地方，其每个元素都记录了下一个元素的内存地址，所以随机的存放也可以串在一起。这里引入Java中的Node链表，里面的关键是这个几个变量：hash, key, value, next，next记录了下一个节点。
+这样也出现了一个问题，想访问最后一个元素
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-10 22:12" pubdate>
+              2020-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/algorithm/">algorithm</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/03/29/python%E6%A8%A1%E5%9D%97%E6%80%BB%E7%BB%93/" target="_self">
+          <img src="https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202205/7b1d1b735095c31f76061f1ea52b2a0d--1172751072.jpg" srcset="/img/loading.gif" lazyload alt="python模块总结">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/29/python%E6%A8%A1%E5%9D%97%E6%80%BB%E7%BB%93/" target="_self">
+          python模块总结
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/29/python%E6%A8%A1%E5%9D%97%E6%80%BB%E7%BB%93/" target="_self">
+          
+          
+            
+          
+          模块的调用及创建
+模块的导入模块导入的方式123456import math				# 导入一个模块import math, turtle		# 这种方式可以导入多个模块import math as mth		# 导入模块并赋予新的名字(调用时使用新的名字)from math import pi		# 导入模块中指定的成员(这样导入后可以直接使用)form math import *		# 导入模
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-29 17:05" pubdate>
+              2020-03-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/03/27/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%80%E7%AB%A0%E6%80%BB%E7%BB%93/" target="_self">
+          <img src="//i.loli.net/2020/03/27/TcB8bWyVqpRaMw9.png" srcset="/img/loading.gif" lazyload alt="算法图解第一章总结">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/27/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%80%E7%AB%A0%E6%80%BB%E7%BB%93/" target="_self">
+          算法图解第一章总结
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/27/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E7%AC%AC%E4%B8%80%E7%AB%A0%E6%80%BB%E7%BB%93/" target="_self">
+          
+          
+            
+          
+          最近会抽出点时间慢慢的将这本书看完，希望看完能让自己再进一步。
+二分查找解释从1-100中猜测一个数字，使用二分查找，每次都猜测的是中间的数字，每一次的猜测，都可以将剩下的数字排除掉一半，比从头猜到尾可以大幅度减少猜测时间。即使要猜测的数字位于尾部，也仍是更佳的查找方式。
+
+用二分查找最多需要要$log_{2}{n}$次，每一次的查找都会排除掉一半，这里引入对数的概念(如果a的x次方等于N（a&g
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-27 20:32" pubdate>
+              2020-03-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/03/26/python%E5%85%A5%E5%8F%A3%E7%9A%84%E4%B8%80%E4%B8%AA%E7%90%86%E8%A7%A3/" target="_self">
+          <img src="https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202204/aec84856063be3794df7048934deaf03--2033625846.jpg" srcset="/img/loading.gif" lazyload alt="__name__ == &#39;__main__&#39;的作用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/26/python%E5%85%A5%E5%8F%A3%E7%9A%84%E4%B8%80%E4%B8%AA%E7%90%86%E8%A7%A3/" target="_self">
+          __name__ == &#39;__main__&#39;的作用
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/26/python%E5%85%A5%E5%8F%A3%E7%9A%84%E4%B8%80%E4%B8%AA%E7%90%86%E8%A7%A3/" target="_self">
+          
+          
+            
+          
+          技术性总结
+name == ‘main‘的作用摘要
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-26 10:37" pubdate>
+              2020-03-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
