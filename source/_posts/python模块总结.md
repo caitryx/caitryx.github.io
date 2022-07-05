@@ -5,7 +5,7 @@ tags:
     - python
 category: #分类(分层)
     - python
-index_img: //cdn-ali-img.birdpaper.cn/bizhi/staticwp/202004/369d2585daffdd32717d121eb8304e9a--3628141035.jpg
+index_img: https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202205/7b1d1b735095c31f76061f1ea52b2a0d--1172751072.jpg
 ---
 
 模块的调用及创建

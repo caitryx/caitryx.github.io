@@ -5,7 +5,7 @@ tags:
 	- python
 categories: #分类(分层)
     - python
-index_img: //i.loli.net/2020/03/25/7DaRgZ981F6mPVs.jpg
+index_img: https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202204/aec84856063be3794df7048934deaf03--2033625846.jpg
 ---
 
 技术性总结
