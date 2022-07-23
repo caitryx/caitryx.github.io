@@ -5,7 +5,7 @@ tags:
     - pointer
 categories:
     - c
-index_img: //cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202105/58ecbeb7dbd1e25a1e063d6c7f47037b--3853100870.jpg
+index_img: https://cdn-ali-img-shstaticbz.shanhutech.cn/bizhi/staticwp/202105/58ecbeb7dbd1e25a1e063d6c7f47037b--3853100870.jpg
 ---
 
 *这里指针的内容根据c Primer Plus上整理出来的，省略了书上部分内容，只记录了容易混淆的一些内容。*
